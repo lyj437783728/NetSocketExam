@@ -21,7 +21,8 @@ public class ClientSocket{
 			BufferedInputStream bis=new BufferedInputStream(fis);
 			
 			byte[] input =new byte[1024];
-			while(bis.read(input)!=-1){
+			int len = 0;
+			while((len = bis.read(input)) != -1){
 				bos.write(input);
 			}
             

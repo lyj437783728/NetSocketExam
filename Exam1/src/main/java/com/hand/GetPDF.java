@@ -36,8 +36,9 @@ class ReadByGet extends Thread{
 			BufferedOutputStream bos = new BufferedOutputStream(fos,1000);
 			
 			byte input[] = new byte[100];
-			while(bis.read(input) != -1){
-				bos.write(input);
+			int len =0;
+			while((len = bis.read(input)) != -1){
+				bos.write(input,0,len);
 			}
 			bis.close();
 			is.close();

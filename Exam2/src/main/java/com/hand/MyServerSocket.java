@@ -26,14 +26,15 @@ public class MyServerSocket {
 				    in = new BufferedInputStream(socket.getInputStream());  
  
 				    FileOutputStream fos=new FileOutputStream("new_target.pdf");
-					BufferedOutputStream bis=new BufferedOutputStream(fos);
+					BufferedOutputStream bos=new BufferedOutputStream(fos);
 				    
 				    byte[] input =new byte[1024];
-					while(in.read(input)!=-1){
-						bis.write(input);
+				    int len = 0;
+					while((len = in.read(input))!=-1){
+						bos.write(input,0,len);
 					}
 					
-					bis.close();
+					bos.close();
 					fos.close();
 
 				    in.close();  
